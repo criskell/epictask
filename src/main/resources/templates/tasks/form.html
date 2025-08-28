@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dracula">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EpicTask</title>
+</head>
+
+<body class="flex flex-col">
+    <div class="navbar bg-base-200 shadow-sm mb-4">
+        <a class="btn btn-ghost text-xl">EpicTask</a>
+    </div>
+
+    <form action="/tasks/form" class="mx-auto mt-8 w-lg" method="POST">
+        <h2 class="text-2xl font-bold text-primary mt-4">Nova tarefa</h2>
+
+        <fieldset className="fieldset">
+            <legend className="fieldset-legend">Título</legend>
+            <input type="text" class="input" placeholder="Título da tarefa" name="title" />
+            <p className="label">* Campo obrigatório</p>
+        </fieldset>
+
+        <fieldset className="fieldset">
+            <legend className="fieldset-legend">Descrição</legend>
+            <input type="text" class="input" placeholder="Descrição da tarefa" name="description" />
+            <p className="label">Pelo menos 10 caracteres</p>
+        </fieldset>
+
+        <fieldset className="fieldset">
+            <legend className="fieldset-legend">Pontos</legend>
+            <input type="number" class="input" name="score" />
+            <p className="label">Pelo menos 10 caracteres</p>
+        </fieldset>
+
+        <div class="mt-1">
+            <a href="/tasks" class="btn btn-neutral">Cancelar</a>
+            <button class="btn btn-primary">Salvar</button>
+        </div>
+    </form> 
+
+</body>
+
+</html>

@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.criskell.epictask.model.Task;
 
@@ -24,5 +27,17 @@ class TaskController {
         model.addAttribute("tasks", tasks);
 
         return "tasks/index";
+    }
+
+    @GetMapping("/form")
+    public String showForm() {
+        return "tasks/form";
+    }
+
+    @PostMapping("/form")
+    @ResponseBody
+    public String create(Task task) {
+        System.out.println("cadastrando tarefa... " + task);
+        return "form";
     }
 }
