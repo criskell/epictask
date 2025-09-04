@@ -10,8 +10,8 @@
     <title>EpicTask</title>
 </head>
 
-<body class="flex flex-col">
-    <div class="navbar bg-base-200 shadow-sm mb-4">
+<body class="flex flex-col gap-8">
+    <div class="navbar bg-base-200 shadow-sm">
         <a class="btn btn-ghost text-xl">EpicTask</a>
     </div>
 
@@ -20,9 +20,13 @@
         Nova tarefa
     </a>
 
-    <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
+    <div th:if="${message != null}" role="alert" class="alert alert-success alert-soft m-4">
+        <span th:text="${message}"></span>
+    </div>
 
-        <div class="card card-border bg-base-300 w-96" th:each="task : ${tasks}">
+    <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-8">
+
+        <div class="card card-border bg-base-300" th:each="task : ${tasks}">
             <div class="badge badge-accent m-4" th:text="|${task.score} pts|" />
             <div class="card-body items-center">
                 <h2 class="card-title" th:text="${task.title}" />

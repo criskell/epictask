@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.criskell.epictask.model.Task;
 
@@ -34,8 +35,9 @@ class TaskController {
     }
 
     @PostMapping("/form")
-    public String create(Task task) {
+    public String create(Task task, RedirectAttributes redirect) {
         tasks.add(task);
+        redirect.addFlashAttribute("message", "Tarefa cadastrada com sucesso!");
         return "redirect:/tasks";
     }
 }
