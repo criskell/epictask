@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dracula">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EpicTask</title>
+</head>
+
+<body class="flex flex-col">
+    <div class="navbar bg-base-200 shadow-sm mb-4">
+        <a class="btn btn-ghost text-xl">EpicTask</a>
+    </div>
+
+    <div class="card bg-neutral text-neutral-content w-96 mx-auto">
+        <div class="card-body items-center text-center">
+            <h2 class="card-title">Logout</h2>
+            <p>Tem certeza que quer sair da aplicação?</p>
+            <div class="card-actions justify-end">
+                <a class="btn btn-active" href="javascript:history.back()">Voltar para o app</a>
+                <!-- Confirmação na direita em LTR. -->
+                <form method="POST" th:action="@{/logout}">
+                    <button class="btn btn-primary" type="submit">Sim</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

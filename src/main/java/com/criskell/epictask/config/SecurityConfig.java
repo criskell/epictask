@@ -11,10 +11,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                    .authorizeHttpRequests((auth) -> auth.requestMatchers("/tasks/**").authenticated()
+                    .authorizeHttpRequests((auth) -> auth
+                        .requestMatchers("/tasks/**").permitAll()
+                        .requestMatchers("/logout").permitAll()
                         .requestMatchers("/").permitAll()    
                     )
-                    .oauth2Login(Customizer.withDefaults())
+                    // .oauth2Login(Customizer.withDefaults())
+                    .oauth2Login(login -> login.loginPage("/login").defaultSuccessUrl("/tasks").permitAll())
+                    .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login").permitAll())
                     .build();
     }
 }

@@ -1,6 +1,8 @@
 package com.criskell.epictask.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +20,10 @@ public class TaskController {
     private TaskRepository taskRepository;
 
     @GetMapping
-    public String list(Model model) {
+    public String list(Model model, @AuthenticationPrincipal OAuth2User user) {
         model.addAttribute("tasks", taskRepository.findAll());
+        model.addAttribute("user", user);
+
         return "tasks/index";
     }
 
